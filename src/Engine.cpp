@@ -12,6 +12,7 @@ Engine::Engine()
 
 Engine::~Engine()
 {
+	std::cout << "Engine Teardown!" << std::endl;
 }
 
 } // namespace SSGE
