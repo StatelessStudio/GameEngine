@@ -15,6 +15,11 @@ class SsgeConan(ConanFile):
     generators = "cmake"
     exports_sources = "src/*"
 
+    requires = [
+        ("poco/1.10.1"),
+        ("bullet3/2.89")
+    ]
+
     def build(self):
         cmake = CMake(self)
         cmake.configure(source_folder="src")
