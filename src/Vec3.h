@@ -1,5 +1,7 @@
 #pragma once
 
+#include <LinearMath/btVector3.h>
+
 namespace SSGE
 {
 
@@ -10,6 +12,7 @@ public:
 
 	Vec3::Vec3() {}
 	Vec3::Vec3(float x, float y, float z) : x(x), y(y), z(z) {}
+	Vec3::Vec3(const btVector3& v) : x(v.x()), y(v.y()), z(v.z()) {}
 
 	Vec3 Vec3::operator+(Vec3 other)
 	{
@@ -26,6 +29,21 @@ public:
 		x += other.x;
 		y += other.y;
 		z += other.z;
+	}
+
+	// Physics (BULLET)
+	operator btVector3()
+	{
+		return btVector3(x, y, z);
+	}
+
+	Vec3& operator=(const btVector3& other)
+	{
+		x = other.x();
+		y = other.y();
+		z = other.z();
+
+		return *this;
 	}
 };
 

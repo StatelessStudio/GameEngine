@@ -13,6 +13,8 @@ namespace SSGE
 class CollisionEntity : public Entity
 {
 protected:
+	friend class PhysicsWorld;
+
 	/** Mass. Set to 0 for a static object */
 	float mass;
 
