@@ -76,7 +76,7 @@ public:
 	 * 
 	 * @param CollisionEntity* entity Entity to add
 	 */
-	void PhysicsWorld::addEntity(CollisionEntity* entity);
+	void PhysicsWorld::addEntity(CollisionEntity& entity);
 };
 
 } // namespace SSGE

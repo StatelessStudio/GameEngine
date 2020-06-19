@@ -29,42 +29,42 @@ void PhysicsWorld::setGravity(Vec3 _gravity)
 	gravity = _gravity;
 }
 
-void PhysicsWorld::addEntity(CollisionEntity* entity)
+void PhysicsWorld::addEntity(CollisionEntity& entity)
 {
 	// TODO: Make sure we clean this stuff up!
-	entity->collisionShape = new btBoxShape(entity->scale);
+	entity.collisionShape = new btBoxShape(entity.scale);
 
 	// Create start transform
 	btTransform startTransform;
 	btVector3 localInertia(0, 0, 0);
 
 	startTransform.setIdentity();
-	startTransform.setOrigin(entity->position);
+	startTransform.setOrigin(entity.position);
 
-	if (entity->mass > 0) {
-		entity->collisionShape->calculateLocalInertia(
-			entity->mass,
+	if (entity.mass > 0) {
+		entity.collisionShape->calculateLocalInertia(
+			entity.mass,
 			localInertia
 		);
 	}
 
 	// Create motion state
-	entity->motionState = new btDefaultMotionState(startTransform);
+	entity.motionState = new btDefaultMotionState(startTransform);
 
 	// Create rigid body
 	btRigidBody::btRigidBodyConstructionInfo rbInfo(
-		entity->mass,
-		entity->motionState,
-		entity->collisionShape,
+		entity.mass,
+		entity.motionState,
+		entity.collisionShape,
 		localInertia
 	);
-	entity->rigidBody = new btRigidBody(rbInfo);
-	entity->rigidBody->setRestitution(entity->restitution);
-	entity->rigidBody->setFriction(entity->friction);
-	entity->rigidBody->setUserPointer(entity);
+	entity.rigidBody = new btRigidBody(rbInfo);
+	entity.rigidBody->setRestitution(entity.restitution);
+	entity.rigidBody->setFriction(entity.friction);
+	entity.rigidBody->setUserPointer(&entity);
 
 	// Add to the world
-	world->addRigidBody(entity->rigidBody);
+	world->addRigidBody(entity.rigidBody);
 }
 
 void PhysicsWorld::step()

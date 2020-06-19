@@ -13,14 +13,14 @@ int main()
     ent1.setPosition(SSGE::Vec3(5, 5, 5));
     ent1.setMass(1);
 
-    physicsWorld.addEntity(&ent1);
+    physicsWorld.addEntity(ent1);
 
     // A floor for the box to land on
     SSGE::CollisionEntity ent2;
     ent2.setPosition(SSGE::Vec3(5, -5, 5));
     ent2.setScale(SSGE::Vec3(100, 1, 100));
 
-    physicsWorld.addEntity(&ent2);
+    physicsWorld.addEntity(ent2);
 
     // Run simulation
     for (int i = 0; i < 150; i++) {
