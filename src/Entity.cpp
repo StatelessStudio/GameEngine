@@ -13,7 +13,7 @@ Entity::Entity() :
 
 unsigned int Entity::getId()
 {
-	if (hasId) {
+	if (!hasId) {
 		throw SSGE::Exception("ID has not been set for entity");
 	}
 
