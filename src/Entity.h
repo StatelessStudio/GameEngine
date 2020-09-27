@@ -3,6 +3,8 @@
 #include "Vec3.h"
 #include "Node.h"
 
+#include <string>
+
 namespace SSGE
 {
 
@@ -52,6 +54,21 @@ public:
 	 * @param Vec3 _scale New scale
 	 */
 	void setScale(Vec3 _scale);
+
+	/**
+	 * Serialize this Entity for transmission
+	 * 
+	 * @return std::string Returns the serialized string
+	 */
+	std::string serialize();
+
+	/**
+	 * Unserialize a string into this Entity
+	 * 
+	 * @param std::string payload Serialized Entity
+	 * @return bool Returns true if unserialization succeeds
+	 */
+	bool unserialize(std::string payload);
 };
 
 } // namespace SSGE
