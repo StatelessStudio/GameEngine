@@ -122,7 +122,6 @@ bool Entity::unserialize(std::string payload)
 		return true;
 	}
 	catch (std::exception ex) {
-		std::cout << "[ERROR] " << ex.what() << std::endl;
 		return false;
 	}
 }
